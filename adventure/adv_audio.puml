@@ -1,0 +1,82 @@
+@startuml
+!define RECTANGLE class
+
+RECTANGLE RandomItemSelector {
+    - items
+    - used_items
+    + __init__(items)
+    + add_item(item)
+    + pull_random_item()
+    + reset()
+}
+
+RECTANGLE SenseClueGenerator {
+    - _instance
+    + __new__()
+    + get_senseclue()
+}
+
+RECTANGLE EncounterOutcome {
+    <<enumeration>>
+    CONTINUE
+    END
+}
+
+RECTANGLE Encounter {
+    + run_encounter() : EncounterOutcome
+}
+
+RECTANGLE DefaultEncounter {
+    - sense_clue_generator
+    + __init__()
+    + run_encounter() : EncounterOutcome
+}
+
+RECTANGLE Room {
+    - name
+    - encounter
+    + __init__(name, encounter)
+    + visit_room() : EncounterOutcome
+}
+
+RECTANGLE TreasureEncounter {
+    + run_encounter() : EncounterOutcome
+}
+
+RECTANGLE RedWizardEncounter {
+    + run_encounter() : EncounterOutcome
+}
+
+RECTANGLE BlueWizardEncounter {
+    + run_encounter() : EncounterOutcome
+}
+
+RECTANGLE Castle {
+    - room_selector
+    + __init__(rooms)
+    + select_door() : int
+    + next_room() : EncounterOutcome
+    + reset()
+}
+
+RECTANGLE Game {
+    - castle
+    + __init__(rooms)
+    + play_game()
+}
+
+RandomItemSelector --> SenseClueGenerator : uses
+SenseClueGenerator --> RandomItemSelector : uses
+DefaultEncounter --> SenseClueGenerator : uses
+Room --> Encounter : contains
+Castle --> RandomItemSelector : uses
+Game --> Castle : contains
+Room <|-- DefaultEncounter
+Room <|-- TreasureEncounter
+Room <|-- RedWizardEncounter
+Room <|-- BlueWizardEncounter
+Encounter <|-- DefaultEncounter
+Encounter <|-- TreasureEncounter
+Encounter <|-- RedWizardEncounter
+Encounter <|-- BlueWizardEncounter
+@enduml
