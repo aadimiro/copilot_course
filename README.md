@@ -20,6 +20,9 @@ Das Schlossabenteuerspiel ist ein textbasiertes Abenteuerspiel, bei dem der Spie
 - **Castle**: Eine Klasse, die das Schloss und die Navigation durch die Räume verwaltet.
 - **Game**: Die Hauptklasse, die das Spiel steuert und den Spielablauf verwaltet.
 
+![Link to Image](/adventure/image.png)
+
+
 ### 2. Rock Paper Scissors Lizard Spock (RPSLS.PY)
 
 Dieses Spiel ist eine erweiterte Version des klassischen Schere-Stein-Papier-Spiels, bei dem zwei zusätzliche Optionen hinzugefügt wurden: Echse und Spock. Das Spiel wird über die Konsole gespielt, und der Spieler tritt gegen den Computer an.
